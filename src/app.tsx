@@ -13,7 +13,7 @@ export function App() {
           <span class="app-note__plus">+</span>
           <img
             class="app-note__mouse"
-            src="/src/assets/mouse-scroll.svg"
+            src="mouse-scroll.svg"
             alt="mouse scroll"
           />
           <span class="app-note__desc">приближение</span>
@@ -23,7 +23,7 @@ export function App() {
           <span class="app-note__plus">+</span>
           <img
             class="app-note__mouse"
-            src="/src/assets/mouse-scroll.svg"
+            src="mouse-scroll.svg"
             alt="mouse scroll"
           />
           <span class="app-note__desc">горизонтальный скролл</span>
@@ -31,7 +31,7 @@ export function App() {
         <div class="app-note__item">
           <img
             class="app-note__mouse"
-            src="/src/assets/mouse-scroll.svg"
+            src="mouse-scroll.svg"
             alt="mouse scroll"
           />
           <span class="app-note__desc">вертикальный скролл</span>
