@@ -1,0 +1,324 @@
+.card_container {
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  position: relative;
+  display: grid;
+  place-items: center;
+  overscroll-behavior: contain;
+  background: transparent;
+}
+
+.card_stage {
+  width: calc(1600px * var(--card-scale, 1));
+  height: calc(900px * var(--card-scale, 1));
+  position: relative;
+}
+
+.card {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  transform: scale(var(--card-scale, 1));
+  transform-origin: top left;
+  background: brown;
+}
+
+.card_layer {
+  position: absolute;
+  inset: 0;
+}
+
+.card_layer--display {
+  z-index: 1;
+  pointer-events: none;
+}
+
+.card_layer--overlay {
+  z-index: 2;
+}
+
+.card_layer--overlay .card_slot {
+  pointer-events: auto;
+}
+
+.card_slot--display {
+  pointer-events: none;
+}
+
+.card_img--ghost,
+.common-badge--ghost,
+.main-badge--ghost,
+.banner--ghost {
+  opacity: 0;
+}
+
+.avatar--ghost {
+  opacity: 0;
+}
+
+.card_slot {
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.card_slot.is-selected {
+  outline: 2px solid #27d4d4;
+  outline-offset: -2px;
+}
+
+.card_slot:hover {
+  outline: 1px dashed #27d4d4;
+  outline-offset: -1px;
+}
+
+.is-exporting-card .card_slot.is-selected,
+.is-exporting-card .card_slot:hover {
+  outline: none;
+}
+
+.card_slot--background,
+.card_slot--frame {
+  left: 0px;
+  top: 0px;
+  width: 1600px;
+  height: 900px;
+}
+
+.card_slot--friend {
+  width: 148px;
+  height: 148px;
+}
+
+.card_slot--avatar {
+  position: absolute;
+  left: 341px;
+  top: 31px;
+  width: 340px;
+  height: 340px;
+
+  overflow: hidden;
+}
+
+.card_slot--background::after,
+.card_slot--frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px dashed rgba(39, 212, 212, 0.35);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.card_slot--background:empty::after,
+.card_slot--frame:empty::after {
+  opacity: 1;
+}
+
+.is-exporting-card .card_slot--background::after,
+.is-exporting-card .card_slot--frame::after {
+  opacity: 0;
+}
+.card_slot--background .card_img,
+.card_slot--frame .card_frame {
+  left: 0px;
+  top: 0px;
+  position: absolute;
+  width: 1600px;
+  height: 900px;
+}
+
+.card_slot--avatar .card_avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.friends {
+  position: absolute;
+  left: 1018px;
+  top: 24px;
+  display: grid;
+  grid-template-columns: repeat(7, 72px);
+  grid-template-rows: repeat(2, 70px);
+  min-width: 592px;
+  min-height: 148px;
+  gap: 8px;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card_slot--friend {
+  width: 100%;
+  height: 100%;
+}
+
+.common-badges {
+  position: absolute;
+  left: 1015px;
+  top: 196px;
+  display: grid;
+  grid-template-columns: repeat(4, 124px);
+  grid-auto-rows: 124px;
+  column-gap: 21px;
+  row-gap: 16px;
+  min-width: 559px;
+  min-height: 684px;
+}
+
+.card_slot--common-badge,
+.common-badge {
+  width: 124px;
+  height: 124px;
+}
+
+.card_slot--common-badge::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px dashed rgba(39, 212, 212, 0.35);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.card_slot--common-badge:empty::after {
+  opacity: 1;
+}
+
+.is-exporting-card .card_slot--common-badge::after {
+  opacity: 0;
+}
+.main-badges {
+  position: absolute;
+  left: 724px;
+  top: 337px;
+  display: grid;
+  grid-template-columns: 263px;
+  grid-auto-rows: 263px;
+  row-gap: 17px;
+  min-width: 263px;
+  min-height: 543px;
+}
+
+.card_slot--main-badge,
+.main-badge {
+  width: 263px;
+  height: 263px;
+}
+
+.card_slot--main-badge::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px dashed rgba(39, 212, 212, 0.35);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.card_slot--main-badge:empty::after {
+  opacity: 1;
+}
+
+.is-exporting-card .card_slot--main-badge::after {
+  opacity: 0;
+}
+.banners {
+  position: absolute;
+  left: 710px;
+  top: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 140px);
+  grid-auto-rows: 306px;
+  column-gap: 10px;
+  min-width: 290px;
+  min-height: 306px;
+}
+
+.card_slot--banner,
+.banner {
+  width: 140px;
+  height: 306px;
+}
+
+.card_slot--banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px dashed rgba(39, 212, 212, 0.35);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.card_slot--banner:empty::after {
+  opacity: 1;
+}
+
+.is-exporting-card .card_slot--banner::after {
+  opacity: 0;
+}
+.text {
+  position: absolute;
+  left: 40px;
+  top: 426px;
+  width: 627px;
+}
+
+.text-nickname {
+  position: absolute;
+  left: 133px;
+  top: 0;
+  font-size: 20px;
+}
+
+.text-entry-time {
+  position: absolute;
+  left: 133px;
+  top: 33px;
+  font-size: 20px;
+}
+
+.text-about {
+  position: absolute;
+  left: 0;
+  top: 72px;
+  width: 627px;
+  font-size: 20px;
+  line-height: 40px;
+  text-indent: 133px;
+}
+
+.card > *:hover,
+.friends > .avatar:hover,
+.common-badges > .common-badge:hover,
+.main-badges > .main-badge:hover,
+.banners > .banner:hover,
+.text > *:hover {
+  outline: 1px solid #27d4d4;
+  outline-offset: -1px;
+}
+
+.is-exporting-card .card > *:hover,
+.is-exporting-card .friends > .avatar:hover,
+.is-exporting-card .common-badges > .common-badge:hover,
+.is-exporting-card .main-badges > .main-badge:hover,
+.is-exporting-card .banners > .banner:hover,
+.is-exporting-card .text > *:hover {
+  outline: none;
+}
