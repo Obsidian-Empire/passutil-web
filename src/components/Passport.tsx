@@ -16,6 +16,7 @@ import {
   MainBadgesEdit,
   MainBadgesView,
   PassportProvider,
+  TextEdit,
   TextView,
 } from "./Passport/index";
 import "./Passport.css";
@@ -96,6 +97,7 @@ function CardEditLayout() {
       <CommonBadgesEdit />
       <MainBadgesEdit />
       <BannersEdit />
+      <TextEdit />
     </div>
   );
 }

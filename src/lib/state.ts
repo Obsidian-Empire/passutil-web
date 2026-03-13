@@ -42,6 +42,7 @@ export type CardSlotKind =
   | "frame"
   | "avatar"
   | "friend"
+  | "text"
   | "banner"
   | "main_badge"
   | "common_badge";

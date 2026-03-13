@@ -19,6 +19,8 @@ export interface SideContextValue {
   blobError: string | null;
   activeSlot: CardSlotId | null;
   setActiveSlot: (slot: CardSlotId | null) => void;
+  isTextEdit: boolean;
+  setTextEdit: () => void;
   activeCategory: string | null;
   setActiveCategory: (value: string | null) => void;
   avatarError: string | null;
@@ -47,6 +49,12 @@ export function SideProvider({ children }: { children: ReactNode }) {
   const [blobStatus, setBlobStatus] = useState<BlobStatus>("idle");
   const [blobError, setBlobError] = useState<string | null>(null);
   const [activeSlot, setActiveSlot] = useState<CardSlotId | null>(null);
+  const setTextEdit = useMemo(
+    () => () => {
+      setActiveSlot({ kind: "text", index: 0 });
+    },
+    [],
+  );
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [avatarError, setAvatarError] = useState<string | null>(null);
   const [friendError, setFriendError] = useState<string | null>(null);
@@ -192,6 +200,14 @@ export function SideProvider({ children }: { children: ReactNode }) {
             };
             return { ...prev, selected: nextSelected };
           }
+          case "text": {
+            return {
+              ...prev,
+              nickname: "",
+              entry_time: "",
+              about: "",
+            };
+          }
           default:
             return prev;
         }
@@ -218,6 +234,7 @@ export function SideProvider({ children }: { children: ReactNode }) {
 
   const isBackgroundGroup =
     activeSlot?.kind === "background" || activeSlot?.kind === "frame";
+  const isTextEdit = activeSlot?.kind === "text";
 
   const section: BlobSection | null = useMemo(() => {
     if (!activeSlot || !blob) {
@@ -228,6 +245,8 @@ export function SideProvider({ children }: { children: ReactNode }) {
         return blob.backgrounds;
       case "frame":
         return blob.frames;
+      case "text":
+        return null;
       case "banner":
         return blob.banners;
       case "main_badge":
@@ -266,6 +285,8 @@ export function SideProvider({ children }: { children: ReactNode }) {
       blobError,
       activeSlot,
       setActiveSlot,
+      isTextEdit,
+      setTextEdit,
       activeCategory,
       setActiveCategory,
       avatarError,
@@ -287,6 +308,8 @@ export function SideProvider({ children }: { children: ReactNode }) {
       blobStatus,
       blobError,
       activeSlot,
+      isTextEdit,
+      setTextEdit,
       activeCategory,
       avatarError,
       friendError,

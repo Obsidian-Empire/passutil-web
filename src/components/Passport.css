@@ -87,13 +87,20 @@
   height: 900px;
 }
 
+.card_slot--text {
+  position: absolute;
+  left: 40px;
+  top: 426px;
+  width: 627px;
+  height: 450px;
+}
+
 .card_slot--avatar {
   position: absolute;
   left: 341px;
   top: 31px;
   width: 340px;
   height: 340px;
-  overflow: hidden;
 }
 
 .card_slot--background::after,
@@ -102,13 +109,18 @@
 .card_slot--main-badge::after,
 .card_slot--banner::after,
 .card_slot--friend::after,
-.card_slot--avatar::after {
+.card_slot--avatar::after,
+.card_slot--text::after {
   content: "";
   position: absolute;
   inset: 0;
   border: 1px dashed rgba(39, 212, 212, 0.35);
   opacity: 0;
   pointer-events: none;
+}
+
+.card_slot--text::after {
+  opacity: 1;
 }
 
 .card_slot--background:empty::after,
@@ -127,7 +139,8 @@
 .is-exporting-card .card_slot--main-badge::after,
 .is-exporting-card .card_slot--banner::after,
 .is-exporting-card .card_slot--friend::after,
-.is-exporting-card .card_slot--avatar::after {
+.is-exporting-card .card_slot--avatar::after,
+.is-exporting-card .card_slot--text::after {
   opacity: 0;
 }
 
@@ -231,8 +244,11 @@
 .text {
   position: absolute;
   left: 40px;
-  top: 426px;
+  top: 420px;
   width: 627px;
+  height: 450px;
+  display: block;
+  overflow: hidden;
 }
 
 .text-nickname {
@@ -245,18 +261,29 @@
 .text-entry-time {
   position: absolute;
   left: 133px;
-  top: 33px;
+  top: 35px;
   font-size: 20px;
 }
 
 .text-about {
   position: absolute;
   left: 0;
-  top: 72px;
+  top: 68px;
   width: 627px;
+  max-width: 627px;
   font-size: 20px;
   line-height: 40px;
   text-indent: 133px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.text--edit {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
 }
 
 .card > *:hover,
