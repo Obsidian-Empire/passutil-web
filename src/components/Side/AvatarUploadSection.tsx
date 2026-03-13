@@ -11,7 +11,7 @@ export function AvatarUploadSection() {
 
   return (
     <label className="side__upload">
-      <span className="side__upload-title">Upload user</span>
+      <span className="side__upload-title">Загрузить аватар</span>
       <input
         className="side__upload-input"
         type="file"

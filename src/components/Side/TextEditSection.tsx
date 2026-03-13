@@ -11,12 +11,13 @@ export function TextEditSection() {
 
   return (
     <div className="side__upload">
-      <span className="side__upload-title">Текст</span>
       <label className="side__select">
-        <span className="side__select-label">Прозвище</span>
-        <span className="side__counter">
-          {Math.max(0, 38 - state.nickname.length)}
-        </span>
+        <div className="side__section_item">
+          <span className="side__select-label">Прозвище</span>
+          <span className="side__counter">
+            {Math.max(0, 38 - state.nickname.length)}
+          </span>
+        </div>
         <input
           className="side__upload-input"
           type="text"
@@ -30,10 +31,12 @@ export function TextEditSection() {
         />
       </label>
       <label className="side__select">
-        <span className="side__select-label">Прибыл</span>
-        <span className="side__counter">
-          {Math.max(0, 38 - state.entry_time.length)}
-        </span>
+        <div className="side__section_item">
+          <span className="side__select-label">Прибыл</span>
+          <span className="side__counter">
+            {Math.max(0, 38 - state.entry_time.length)}
+          </span>
+        </div>
         <input
           className="side__upload-input"
           type="text"
@@ -47,10 +50,12 @@ export function TextEditSection() {
         />
       </label>
       <label className="side__select">
-        <span className="side__select-label">О себе</span>
-        <span className="side__counter">
-          {Math.max(0, 450 - state.about.length)}
-        </span>
+        <div className="side__section_item">
+          <span className="side__select-label">О себе</span>
+          <span className="side__counter">
+            {Math.max(0, 450 - state.about.length)}
+          </span>
+        </div>
         <textarea
           className="side__upload-input side__textarea"
           rows={6}

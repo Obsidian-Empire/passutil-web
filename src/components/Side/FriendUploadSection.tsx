@@ -2,7 +2,7 @@ import { useCardState } from "../../lib/state";
 import { useSide } from "../../lib/side";
 
 export function FriendUploadSection() {
-  const { setFriendImage, clearFriendImage } = useCardState();
+  const { setFriendImage } = useCardState();
   const { activeSlot, friendError, setFriendError } = useSide();
 
   if (activeSlot?.kind !== "friend") {
@@ -11,10 +11,6 @@ export function FriendUploadSection() {
 
   return (
     <div className="side__upload">
-      <span className="side__upload-title">Friend</span>
-      <label className="side__select">
-        <span className="side__select-label">Имя</span>
-      </label>
       <label className="side__select">
         <span className="side__select-label">Изображение</span>
         <input
@@ -43,13 +39,6 @@ export function FriendUploadSection() {
           }}
         />
       </label>
-      <button
-        className="side__clear"
-        type="button"
-        onClick={() => clearFriendImage(activeSlot.index)}
-      >
-        Удалить изображение
-      </button>
       {friendError ? (
         <span className="side__hint side__hint--error">{friendError}</span>
       ) : null}

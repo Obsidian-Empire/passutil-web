@@ -16,14 +16,14 @@ export function BackgroundGroupSection() {
           type="button"
           onClick={() => setActiveSlot({ kind: "background", index: 0 })}
         >
-          Background
+          Фон
         </button>
         <button
           className={`side__group-button${activeSlot?.kind === "frame" ? " is-active" : ""}`}
           type="button"
           onClick={() => setActiveSlot({ kind: "frame", index: 0 })}
         >
-          Frame
+          Рамка
         </button>
       </div>
     </div>

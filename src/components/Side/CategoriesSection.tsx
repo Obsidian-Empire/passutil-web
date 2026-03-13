@@ -25,9 +25,9 @@ export function CategoriesSection() {
       {!activeSlot ? (
         <div className="side__hint">Сначала выбери слот на паспорте.</div>
       ) : blobStatus === "loading" ? (
-        <div className="side__hint">Загрузка ассетов...</div>
+        <div className="side__hint">Загрузка вариантов...</div>
       ) : blobStatus === "error" ? (
-        <div className="side__hint side__hint--error">
+        <div className="side__hint side__hint--error" role="status">
           {blobError ?? "Ошибка загрузки"}
         </div>
       ) : categories.length ? (
@@ -45,7 +45,7 @@ export function CategoriesSection() {
           </select>
         </label>
       ) : (
-        <div className="side__hint">Нет доступных категорий.</div>
+        <div className="side__hint">Нет доступных категорий для слота.</div>
       )}
     </div>
   );

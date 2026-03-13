@@ -11,6 +11,7 @@ export function ExportButton() {
         await exportCard();
       }}
       disabled={isExporting}
+      aria-busy={isExporting}
     >
       {isExporting ? "Экспорт..." : "Экспорт"}
     </button>
