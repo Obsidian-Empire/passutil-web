@@ -162,7 +162,7 @@
 
 .side__textarea {
   resize: vertical;
-  min-height: 120px;
+  min-height: 250px;
 }
 
 .side__grid {
