@@ -10,6 +10,38 @@
   --social-bg: rgba(47, 48, 58, 0.5);
   --shadow:
     rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+
+  --color-bg: #16171d;
+  --color-panel: rgba(17, 17, 20, 0.6);
+  --color-surface: rgba(255, 255, 255, 0.04);
+  --color-surface-strong: rgba(0, 0, 0, 0.2);
+  --color-surface-solid: #111318;
+  --color-border: rgba(255, 255, 255, 0.2);
+  --color-border-subtle: rgba(255, 255, 255, 0.06);
+  --color-border-weak: rgba(255, 255, 255, 0.08);
+  --color-border-hairline: rgba(255, 255, 255, 0.05);
+  --color-border-strong: rgba(255, 255, 255, 0.3);
+  --color-text: #d7d7d7;
+  --color-text-muted: #9aa3ad;
+  --color-text-dim: #8b8b8b;
+  --color-text-strong: #eaffff;
+  --color-accent: #27d4d4;
+  --color-accent-soft: rgba(39, 212, 212, 0.2);
+  --color-accent-soft-strong: rgba(39, 212, 212, 0.3);
+  --color-accent-glow: rgba(39, 212, 212, 0.15);
+  --color-accent-hover: rgba(39, 212, 212, 0.6);
+  --color-accent-strong: rgba(39, 212, 212, 0.8);
+  --color-accent-dash: rgba(39, 212, 212, 0.35);
+  --color-accent-solid: #27d4d4;
+  --color-focus-ring: rgba(39, 212, 212, 0.25);
+  --color-danger: #ff6b6b;
+  --color-danger-soft: rgba(255, 107, 107, 0.3);
+  --color-danger-strong: rgba(255, 107, 107, 0.8);
+  --color-danger-text: #ff9d9d;
+  --color-danger-text-strong: #ffd1d1;
+  --color-overlay: rgba(0, 0, 0, 0.35);
+  --color-overlay-strong: rgba(0, 0, 0, 0.55);
+
   --sans: system-ui, "Segoe UI", Roboto, sans-serif;
   --heading: system-ui, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
