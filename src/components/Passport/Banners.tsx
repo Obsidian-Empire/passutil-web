@@ -30,7 +30,6 @@ function BannerViewItem({ index }: { index: number }) {
       {banner ? (
         <img className="banner" src={banner.part.url} alt={banner.part.name} />
       ) : null}
-      Card
     </SlotViewItemShell>
   );
 }
