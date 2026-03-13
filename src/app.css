@@ -1,8 +1,16 @@
 .app {
   display: grid;
-  grid-template-columns: 70% 30%;
+  grid-template-columns: 1fr min(30%, 480px);
   height: 100svh;
   overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+  .app {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
 }
 
 .app-note {
@@ -20,6 +28,12 @@
   max-width: 280px;
   box-shadow: var(--shadow);
   backdrop-filter: blur(10px);
+}
+
+@media (max-width: 1024px) {
+  .app-note {
+    visibility: hidden;
+  }
 }
 
 .app-note__title {
