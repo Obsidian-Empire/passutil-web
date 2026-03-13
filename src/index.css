@@ -60,6 +60,11 @@
 body {
   margin: 0;
 }
+
+.app-note__mouse {
+  filter: invert(1) brightness(1.2);
+}
+
 .button-icon {
   filter: invert(1) brightness(2);
 }

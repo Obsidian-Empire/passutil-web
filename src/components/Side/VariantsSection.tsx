@@ -40,7 +40,7 @@ export function VariantsSection() {
   }
 
   return (
-    <div className="side__section">
+    <div className="side__section side__section--variants">
       <div className="side__title">Варианты</div>
       {!activeSlot ? (
         <div className="side__hint">Выбери слот, чтобы увидеть варианты.</div>
