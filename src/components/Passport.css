@@ -10,6 +10,12 @@
   place-items: center;
   overscroll-behavior: contain;
   background: transparent;
+  touch-action: none;
+  cursor: grab;
+}
+
+.card_container:active {
+  cursor: grabbing;
 }
 
 .card_stage {

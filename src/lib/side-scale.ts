@@ -1,4 +1,4 @@
-export interface WheelScaleUpdate {
+export interface ScaleUpdate {
   nextScale: number;
   nextScrollLeft: number;
   nextScrollTop: number;
@@ -14,33 +14,21 @@ export function clampScale(value: number, min: number, max: number): number {
   return Math.min(max, Math.max(min, value));
 }
 
-export function computeWheelScaleUpdate(params: {
+export function computeScaleUpdate(params: {
   currentScale: number;
-  deltaY: number;
+  nextScale: number;
   scrollLeft: number;
   scrollTop: number;
-  clientWidth: number;
-  clientHeight: number;
-  min: number;
-  max: number;
-  intensity: number;
-}): WheelScaleUpdate {
-  const centerX = params.scrollLeft + params.clientWidth / 2;
-  const centerY = params.scrollTop + params.clientHeight / 2;
-
-  const nextScale = clampScale(
-    params.currentScale * (1 - params.deltaY * params.intensity),
-    params.min,
-    params.max,
-  );
-
-  const ratio = nextScale / params.currentScale;
-  const nextScrollLeft = centerX * ratio - params.clientWidth / 2;
-  const nextScrollTop = centerY * ratio - params.clientHeight / 2;
+  anchorX: number;
+  anchorY: number;
+}): ScaleUpdate {
+  const ratio = params.nextScale / params.currentScale;
+  const contentX = params.scrollLeft + params.anchorX;
+  const contentY = params.scrollTop + params.anchorY;
 
   return {
-    nextScale,
-    nextScrollLeft,
-    nextScrollTop,
+    nextScale: params.nextScale,
+    nextScrollLeft: contentX * ratio - params.anchorX,
+    nextScrollTop: contentY * ratio - params.anchorY,
   };
 }
