@@ -2,6 +2,8 @@ import { GithubLogoIcon } from "@phosphor-icons/react";
 import { Button } from "./ui/button";
 import { ImageIcon, UmbrellaSimpleIcon } from "@phosphor-icons/react/dist/ssr";
 
+import { ThemeToggle } from "./ThemeToggle";
+
 function Promo() {
   return (
     <section>
@@ -9,6 +11,7 @@ function Promo() {
         <div className="bg-grad z-1 flex items-center justify-between gap-2">
           <h1 className="text-xl">Passutil</h1>
           <div className="flex gap-2">
+            <ThemeToggle />
             {/* <Button>
               <InfoIcon />
             </Button> */}
