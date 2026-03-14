@@ -3,17 +3,23 @@ import { useSide } from "../../lib/side";
 import { SelectBox } from "../ui/select-box";
 
 export function TextView() {
-  const { nickname, entryTime, about } = usePassportContext();
+  const { nickname, entryTime, about, textColor } = usePassportContext();
 
   return (
-    <SelectBox
-      type="text"
-      aria-hidden="true"
-      className="text-[20px] text-black"
-    >
-      <div className="absolute top-0 left-[133px]">{nickname}</div>
-      <div className="absolute top-[35px] left-[133px]">{entryTime}</div>
-      <div className="absolute top-[68px] left-0 indent-[133px] leading-[40px] wrap-anywhere whitespace-pre-wrap">
+    <SelectBox type="text" aria-hidden="true" className={`text-[20px]`}>
+      <div style={{ color: textColor }} className="absolute top-0 left-[133px]">
+        {nickname}
+      </div>
+      <div
+        style={{ color: textColor }}
+        className="absolute top-[35px] left-[133px]"
+      >
+        {entryTime}
+      </div>
+      <div
+        style={{ color: textColor }}
+        className="absolute top-[68px] left-0 indent-[133px] leading-[40px] wrap-anywhere whitespace-pre-wrap"
+      >
         {about}
       </div>
     </SelectBox>

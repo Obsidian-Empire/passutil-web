@@ -7,6 +7,7 @@ type PassportContextValue = {
   nickname: string;
   entryTime: string;
   about: string;
+  textColor: string;
   user?: string;
   friends: (string | null)[];
   backgroundUrl?: string;
@@ -27,11 +28,13 @@ export function PassportProvider({ children }: { children: ReactNode }) {
   const { activeSlot, setActiveSlot } = useSide();
 
   const value = useMemo<PassportContextValue>(() => {
-    const { nickname, entry_time, about, friends, selected, user } = state;
+    const { nickname, entry_time, about, textColor, friends, selected, user } =
+      state;
     return {
       nickname,
       entryTime: entry_time,
       about,
+      textColor,
       user,
       friends,
       backgroundUrl: selected.background?.part.url,

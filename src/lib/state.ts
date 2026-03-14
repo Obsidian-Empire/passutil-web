@@ -28,6 +28,7 @@ export const CardStateDataSchema = z.object({
   nickname: z.string(),
   entry_time: z.string(),
   about: z.string(),
+  textColor: z.string().default("#000000"),
   user: z.string().optional(),
   friends: z.array(NullableStringSchema).max(14),
   selected: CardSelectedSchema,
@@ -60,6 +61,7 @@ const DEFAULT_CARD_STATE: CardStateData = {
   nickname: "",
   entry_time: "",
   about: "",
+  textColor: "#000000",
   friends: [],
   selected: {},
 };
@@ -69,6 +71,7 @@ export function createDefaultCardState(): CardStateData {
     nickname: DEFAULT_CARD_STATE.nickname,
     entry_time: DEFAULT_CARD_STATE.entry_time,
     about: DEFAULT_CARD_STATE.about,
+    textColor: DEFAULT_CARD_STATE.textColor,
     friends: [],
     selected: {},
   };
@@ -145,6 +148,7 @@ export default class CardState implements CardStateData {
   nickname: string;
   entry_time: string;
   about: string;
+  textColor: string;
   friends: (string | null)[];
   selected: CardSelected;
 
@@ -152,6 +156,7 @@ export default class CardState implements CardStateData {
     this.nickname = initial?.nickname ?? "";
     this.entry_time = initial?.entry_time ?? "";
     this.about = initial?.about ?? "";
+    this.textColor = initial?.textColor ?? "#000000";
     this.friends = initial?.friends ?? [];
     this.selected = initial?.selected ? { ...initial.selected } : {};
   }
@@ -302,7 +307,15 @@ export function StateProvider({ children }: { children: ReactNode }) {
   );
 
   useEffect(() => {
-    persistCardState(state);
+    if (typeof window === "undefined") {
+      return;
+    }
+    const timeoutId = window.setTimeout(() => {
+      persistCardState(state);
+    }, 250);
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
   }, [state]);
 
   const updateState = useMemo(

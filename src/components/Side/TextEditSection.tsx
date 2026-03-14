@@ -1,6 +1,24 @@
 import { useCardState } from "../../lib/state";
 import { useSide } from "../../lib/side";
 import { Input } from "../ui/input";
+import { buttonVariants } from "../ui/button";
+import {
+  Popover,
+  PopoverContent,
+  PopoverHeader,
+  PopoverTitle,
+  PopoverTrigger,
+} from "../ui/popover";
+
+function normalizeHexColor(value: string) {
+  const normalized = value.trim();
+  const match = normalized.match(/^#?[0-9a-fA-F]{6}$/);
+  if (!match) {
+    return "#000000";
+  }
+
+  return normalized.startsWith("#") ? normalized : `#${normalized}`;
+}
 
 export function TextEditSection() {
   const { isTextEdit } = useSide();
@@ -12,6 +30,43 @@ export function TextEditSection() {
 
   return (
     <div className="flex flex-col gap-4">
+      <Popover>
+        <PopoverTrigger
+          className={buttonVariants({ variant: "outline", size: "sm" })}
+        >
+          <span className="flex items-center gap-2">
+            <span
+              className="size-4 rounded-sm border border-border"
+              style={{ backgroundColor: state.textColor }}
+              aria-hidden="true"
+            />
+            <span className="text-xs">Цвет текста</span>
+          </span>
+        </PopoverTrigger>
+        <PopoverContent className="w-60">
+          <PopoverHeader>
+            <PopoverTitle>Цвет текста</PopoverTitle>
+          </PopoverHeader>
+          <div className="flex items-center gap-3">
+            <Input
+              type="color"
+              className="h-10 w-12 p-1"
+              value={state.textColor}
+              onInput={(event) =>
+                updateState({
+                  textColor: normalizeHexColor(event.currentTarget.value),
+                })
+              }
+            />
+            <div className="flex flex-col text-xs text-muted-foreground">
+              <span>HEX</span>
+              <span className="font-mono text-foreground">
+                {state.textColor.toUpperCase()}
+              </span>
+            </div>
+          </div>
+        </PopoverContent>
+      </Popover>
       <label className="flex flex-col gap-2">
         <div className="flex items-center justify-between text-xs text-muted-foreground">
           <span>Прозвище</span>
