@@ -38,9 +38,9 @@ export default function Passport() {
 
   return (
     <TransformWrapper
-      initialScale={0.5}
+      initialScale={0.7}
       minScale={0.5}
-      maxScale={0.8}
+      maxScale={1.2}
       centerOnInit
       zoomAnimation={{
         animationType: "easeInCubic",
