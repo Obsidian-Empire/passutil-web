@@ -4,6 +4,11 @@
 
 ![Static Badge](https://img.shields.io/badge/codex_powered-95%25-green?logo=openaigym)
 
+<div align="center">
+![og](.github/content/preview.webp)
+</div>
+
+
 ## Что это делает
 
 - собирает данные/элементы для паспорта
