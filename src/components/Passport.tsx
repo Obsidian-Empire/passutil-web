@@ -49,7 +49,7 @@ export default function Passport() {
       }}
     >
       <TransformComponent
-        contentStyle={{ width: "100%", height: "100%" }}
+        wrapperStyle={{ width: "100%", height: "100%" }}
         wrapperProps={{ onMouseDown: onContainerMouseDown }}
       >
         <Card cardRef={cardRef} />
