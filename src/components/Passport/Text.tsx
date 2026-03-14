@@ -6,10 +6,16 @@ export function TextView() {
   const { nickname, entryTime, about } = usePassportContext();
 
   return (
-    <SelectBox type="text" aria-hidden="true" className="text">
-      <div className="text-nickname">{nickname}</div>
-      <div className="text-entry-time">{entryTime}</div>
-      <div className="text-about">{about}</div>
+    <SelectBox
+      type="text"
+      aria-hidden="true"
+      className="text-black text-[20px]"
+    >
+      <div className="absolute left-[133px] top-0">{nickname}</div>
+      <div className="absolute left-[133px] top-[35px]">{entryTime}</div>
+      <div className="absolute left-0 top-[68px]  indent-[133px]  leading-[40px] whitespace-pre-wrap wrap-anywhere">
+        {about}
+      </div>
     </SelectBox>
   );
 }

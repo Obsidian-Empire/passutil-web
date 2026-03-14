@@ -20,7 +20,6 @@ import {
   TextEdit,
   TextView,
 } from "./Passport/index";
-import "./Passport.css";
 
 export default function Passport() {
   const { setActiveSlot } = useSide();
@@ -38,23 +37,24 @@ export default function Passport() {
   };
 
   return (
-    <div className="h-svh" onMouseDown={onContainerMouseDown}>
-      <TransformWrapper
-        initialScale={0.5}
-        minScale={0.5}
-        maxScale={0.8}
-        centerOnInit
-        zoomAnimation={{
-          animationType: "easeInCubic",
-          size: 0.5,
-          animationTime: 1,
-        }}
+    <TransformWrapper
+      initialScale={0.5}
+      minScale={0.5}
+      maxScale={0.8}
+      centerOnInit
+      zoomAnimation={{
+        animationType: "easeInCubic",
+        size: 0.5,
+        animationTime: 1,
+      }}
+    >
+      <TransformComponent
+        contentStyle={{ width: "100%", height: "100%" }}
+        wrapperProps={{ onMouseDown: onContainerMouseDown }}
       >
-        <TransformComponent>
-          <Card cardRef={cardRef} />
-        </TransformComponent>
-      </TransformWrapper>
-    </div>
+        <Card cardRef={cardRef} />
+      </TransformComponent>
+    </TransformWrapper>
   );
 }
 

@@ -31,13 +31,7 @@ function CommonBadgeViewItem({ index }: { index: number }) {
       className="cursor-pointer"
       aria-hidden="true"
     >
-      {badge ? (
-        <img
-          className="common-badge"
-          src={badge.part.url}
-          alt={badge.part.name}
-        />
-      ) : null}
+      {badge ? <img src={badge.part.url} alt={badge.part.name} /> : null}
     </SelectBox>
   );
 }

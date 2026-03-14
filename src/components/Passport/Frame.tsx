@@ -6,7 +6,7 @@ export function FrameView() {
 
   return (
     <SelectBox type="frame" aria-hidden="true" className="pointer-events-none">
-      {frameUrl ? <img className="card_frame" src={frameUrl} alt="" /> : null}
+      {frameUrl ? <img src={frameUrl} alt="" /> : null}
     </SelectBox>
   );
 }

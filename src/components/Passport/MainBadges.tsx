@@ -27,13 +27,7 @@ function MainBadgeViewItem({ index }: { index: number }) {
 
   return (
     <SelectBox type="main-badge" className="cursor-pointer" aria-hidden="true">
-      {badge ? (
-        <img
-          className="main-badge"
-          src={badge.part.url}
-          alt={badge.part.name}
-        />
-      ) : null}
+      {badge ? <img src={badge.part.url} alt={badge.part.name} /> : null}
     </SelectBox>
   );
 }

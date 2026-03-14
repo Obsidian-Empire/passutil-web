@@ -28,7 +28,11 @@ function FriendsViewItem({ index }: { index: number }) {
   return (
     <SelectBox type="friend_item" className="cursor-pointer" aria-hidden="true">
       {friend ? (
-        <img className="avatar" src={friend} alt={index.toString()} />
+        <img
+          className="w-full h-full object-cover"
+          src={friend}
+          alt={index.toString()}
+        />
       ) : null}
     </SelectBox>
   );

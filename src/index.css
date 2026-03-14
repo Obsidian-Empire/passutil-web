@@ -123,3 +123,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+.react-transform-wrapper {
+  width: 100%;
+  height: 100%;
+}
