@@ -20,7 +20,7 @@ export function App() {
       ) : (
         <ResizablePanelGroup
           orientation="horizontal"
-          className="min-h-svh w-full min-w-svh rounded-lg border"
+          className="max-h-svh min-h-svh w-full min-w-svh rounded-lg border"
         >
           <ResizablePanel defaultSize="70%">
             <Passport />
