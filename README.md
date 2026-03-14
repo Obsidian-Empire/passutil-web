@@ -5,9 +5,8 @@
 ![Static Badge](https://img.shields.io/badge/codex_powered-95%25-green?logo=openaigym)
 
 <div align="center">
-![og](.github/content/preview.webp)
+  <img src=".github/content/preview.webp" alt="og dsd" />
 </div>
-
 
 ## Что это делает
 
