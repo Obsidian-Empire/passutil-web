@@ -38,7 +38,7 @@ export default function Passport() {
   };
 
   return (
-    <div className="card_container" onMouseDown={onContainerMouseDown}>
+    <div className="h-svh" onMouseDown={onContainerMouseDown}>
       <TransformWrapper
         initialScale={0.5}
         minScale={0.5}
@@ -60,7 +60,7 @@ export default function Passport() {
 
 function Card({ cardRef }: { cardRef: Ref<HTMLDivElement> }) {
   return (
-    <div className="card" ref={cardRef}>
+    <div className="w-[1600px] h-[900px]" ref={cardRef}>
       <PassportProvider>
         <CardView />
         <CardEditLayout />
@@ -71,13 +71,13 @@ function Card({ cardRef }: { cardRef: Ref<HTMLDivElement> }) {
 
 function CardView() {
   return (
-    <div className="card_layer card_layer--display">
+    <div className="w-[1600px] h-[900px] relative card">
       <BackgroundView />
       <FrameView />
       <AvatarView />
       <FriendsView />
-      <CommonBadgesView />
       <MainBadgesView />
+      <CommonBadgesView />
       <BannersView />
       <TextView />
     </div>

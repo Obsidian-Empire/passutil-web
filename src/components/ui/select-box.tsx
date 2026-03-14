@@ -28,7 +28,7 @@ const selectBoxVariants = cva(
           "absolute grid gap-[17px] grid-rows-auto top-[337px] left-[724px] h-[543px] w-[263px]",
         "common-badge": " h-[124px] w-[124px]",
         "common-badges":
-          " absolute grid gap-y-[21px] gap-x-[16px] grid-rows-auto grid-cols-[repeat(4,124px)] top-[196px] left-[1015px] h-[684px] w-[559px]",
+          " absolute grid gap-y-[16px] gap-x-[21px] grid-rows-auto grid-cols-[repeat(4,124px)] top-[196px] left-[1015px] h-[684px] w-[559px]",
         //
       },
     },
