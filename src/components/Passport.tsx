@@ -40,9 +40,9 @@ export default function Passport() {
   return (
     <div className="card_container" onMouseDown={onContainerMouseDown}>
       <TransformWrapper
-        initialScale={0.7}
+        initialScale={0.5}
         minScale={0.5}
-        maxScale={3}
+        maxScale={0.8}
         centerOnInit
         zoomAnimation={{
           animationType: "easeInCubic",
@@ -50,10 +50,7 @@ export default function Passport() {
           animationTime: 1,
         }}
       >
-        <TransformComponent
-          wrapperClass="card_stage"
-          contentClass="card_stage-content"
-        >
+        <TransformComponent>
           <Card cardRef={cardRef} />
         </TransformComponent>
       </TransformWrapper>

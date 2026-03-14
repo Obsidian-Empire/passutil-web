@@ -1,12 +1,11 @@
 import { useSide } from "../../lib/side";
+import { Button } from "../ui/button";
 
 export function ExportButton() {
   const { exportCard, isExporting } = useSide();
 
   return (
-    <button
-      className="side__clear"
-      type="button"
+    <Button
       onClick={async () => {
         await exportCard();
       }}
@@ -14,6 +13,6 @@ export function ExportButton() {
       aria-busy={isExporting}
     >
       {isExporting ? "Экспорт..." : "Экспорт"}
-    </button>
+    </Button>
   );
 }
