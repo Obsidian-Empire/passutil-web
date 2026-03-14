@@ -1,3 +1,4 @@
+import { Promo } from "./Promo";
 import { CategoriesSection } from "./Side/CategoriesSection";
 import { SelectedSlotSection } from "./Side/SelectedSlotSection";
 import { VariantsSection } from "./Side/VariantsSection";
@@ -10,6 +11,7 @@ export function Side() {
         <CategoriesSection />
       </div>
       <VariantsSection />
+      <Promo />
     </div>
   );
 }
