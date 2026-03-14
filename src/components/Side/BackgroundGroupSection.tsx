@@ -1,4 +1,5 @@
 import { useSide } from "../../lib/side";
+import { Button } from "../ui/button";
 
 export function BackgroundGroupSection() {
   const { isBackgroundGroup, activeSlot, setActiveSlot } = useSide();
@@ -8,23 +9,35 @@ export function BackgroundGroupSection() {
   }
 
   return (
-    <div className="side__group">
-      <div className="side__group-title">Связанные слоты</div>
-      <div className="side__group-actions">
-        <button
-          className={`side__group-button${activeSlot?.kind === "background" ? " is-active" : ""}`}
+    <div className="flex flex-col gap-2 rounded-lg border border-border bg-muted/30 p-3">
+      <div className="text-xs uppercase tracking-[0.08em] text-muted-foreground">
+        Связанные слоты
+      </div>
+      <div className="flex gap-2">
+        <Button
+          className={
+            activeSlot?.kind === "background"
+              ? "border-primary text-primary"
+              : undefined
+          }
+          variant="outline"
           type="button"
           onClick={() => setActiveSlot({ kind: "background", index: 0 })}
         >
           Фон
-        </button>
-        <button
-          className={`side__group-button${activeSlot?.kind === "frame" ? " is-active" : ""}`}
+        </Button>
+        <Button
+          className={
+            activeSlot?.kind === "frame"
+              ? "border-primary text-primary"
+              : undefined
+          }
+          variant="outline"
           type="button"
           onClick={() => setActiveSlot({ kind: "frame", index: 0 })}
         >
           Рамка
-        </button>
+        </Button>
       </div>
     </div>
   );

@@ -11,6 +11,7 @@ export function ExportButton() {
       }}
       disabled={isExporting}
       aria-busy={isExporting}
+      variant="ghost"
     >
       {isExporting ? "Экспорт..." : "Экспорт"}
     </Button>

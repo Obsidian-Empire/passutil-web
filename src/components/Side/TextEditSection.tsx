@@ -1,5 +1,6 @@
 import { useCardState } from "../../lib/state";
 import { useSide } from "../../lib/side";
+import { Input } from "../ui/input";
 
 export function TextEditSection() {
   const { isTextEdit } = useSide();
@@ -10,16 +11,13 @@ export function TextEditSection() {
   }
 
   return (
-    <div className="side__upload">
-      <label className="side__select">
-        <div className="side__section_item">
-          <span className="side__select-label">Прозвище</span>
-          <span className="side__counter">
-            {Math.max(0, 38 - state.nickname.length)}
-          </span>
+    <div className="flex flex-col gap-4">
+      <label className="flex flex-col gap-2">
+        <div className="flex items-center justify-between text-xs text-muted-foreground">
+          <span>Прозвище</span>
+          <span>{Math.max(0, 38 - state.nickname.length)}</span>
         </div>
-        <input
-          className="side__upload-input"
+        <Input
           type="text"
           value={state.nickname}
           maxLength={38}
@@ -30,15 +28,12 @@ export function TextEditSection() {
           }
         />
       </label>
-      <label className="side__select">
-        <div className="side__section_item">
-          <span className="side__select-label">Прибыл</span>
-          <span className="side__counter">
-            {Math.max(0, 38 - state.entry_time.length)}
-          </span>
+      <label className="flex flex-col gap-2">
+        <div className="flex items-center justify-between text-xs text-muted-foreground">
+          <span>Прибыл</span>
+          <span>{Math.max(0, 38 - state.entry_time.length)}</span>
         </div>
-        <input
-          className="side__upload-input"
+        <Input
           type="text"
           value={state.entry_time}
           maxLength={38}
@@ -49,15 +44,13 @@ export function TextEditSection() {
           }
         />
       </label>
-      <label className="side__select">
-        <div className="side__section_item">
-          <span className="side__select-label">О себе</span>
-          <span className="side__counter">
-            {Math.max(0, 450 - state.about.length)}
-          </span>
+      <label className="flex flex-col gap-2">
+        <div className="flex items-center justify-between text-xs text-muted-foreground">
+          <span>О себе</span>
+          <span>{Math.max(0, 450 - state.about.length)}</span>
         </div>
         <textarea
-          className="side__upload-input side__textarea"
+          className="min-h-[250px] resize-y rounded-lg border border-input bg-transparent px-2.5 py-2 text-sm outline-none transition focus-visible:ring-3 focus-visible:ring-ring/50"
           rows={6}
           value={state.about}
           maxLength={450}

@@ -1,5 +1,6 @@
 import { useCardState } from "../../lib/state";
 import { useSide } from "../../lib/side";
+import { Input } from "../ui/input";
 
 export function AvatarUploadSection() {
   const { setUserAvatar } = useCardState();
@@ -10,10 +11,9 @@ export function AvatarUploadSection() {
   }
 
   return (
-    <label className="side__upload">
-      <span className="side__upload-title">Загрузить аватар</span>
-      <input
-        className="side__upload-input"
+    <label className="flex flex-col gap-2">
+      <span className="text-xs text-muted-foreground">Загрузить аватар</span>
+      <Input
         type="file"
         accept="image/png,image/jpeg,image/webp"
         onChange={async (event) => {
@@ -38,7 +38,7 @@ export function AvatarUploadSection() {
         }}
       />
       {avatarError ? (
-        <span className="side__hint side__hint--error">{avatarError}</span>
+        <span className="text-xs text-destructive">{avatarError}</span>
       ) : null}
     </label>
   );

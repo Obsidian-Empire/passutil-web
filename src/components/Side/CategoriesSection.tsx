@@ -1,4 +1,11 @@
 import { useSide } from "../../lib/side";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 
 export function CategoriesSection() {
   const {
@@ -20,32 +27,44 @@ export function CategoriesSection() {
   }
 
   return (
-    <div className="side__section">
-      <div className="side__title">Категории</div>
+    <div className="flex flex-col gap-3 h-fit">
+      <div className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+        Категории
+      </div>
       {!activeSlot ? (
-        <div className="side__hint">Сначала выбери слот на паспорте.</div>
+        <div className="text-xs text-muted-foreground">
+          Сначала выбери слот на паспорте.
+        </div>
       ) : blobStatus === "loading" ? (
-        <div className="side__hint">Загрузка вариантов...</div>
+        <div className="text-xs text-muted-foreground">
+          Загрузка вариантов...
+        </div>
       ) : blobStatus === "error" ? (
-        <div className="side__hint side__hint--error" role="status">
+        <div className="text-xs text-destructive" role="status">
           {blobError ?? "Ошибка загрузки"}
         </div>
       ) : categories.length ? (
-        <label className="side__select">
-          <span className="side__select-label">Тип</span>
-          <select
+        <div className="flex flex-col gap-2">
+          <Select
             value={resolvedCategory?.type ?? ""}
-            onChange={(event) => setActiveCategory(event.currentTarget.value)}
+            onValueChange={(value) => setActiveCategory(value)}
           >
-            {categories.map((category) => (
-              <option key={category.type} value={category.type}>
-                {category.type}
-              </option>
-            ))}
-          </select>
-        </label>
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Выберите тип" />
+            </SelectTrigger>
+            <SelectContent>
+              {categories.map((category) => (
+                <SelectItem key={category.type} value={category.type}>
+                  {category.type}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
       ) : (
-        <div className="side__hint">Нет доступных категорий для слота.</div>
+        <div className="text-xs text-muted-foreground">
+          Нет доступных категорий для слота.
+        </div>
       )}
     </div>
   );

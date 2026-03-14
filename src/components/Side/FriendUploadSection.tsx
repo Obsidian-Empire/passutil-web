@@ -1,5 +1,6 @@
 import { useCardState } from "../../lib/state";
 import { useSide } from "../../lib/side";
+import { Input } from "../ui/input";
 
 export function FriendUploadSection() {
   const { setFriendImage } = useCardState();
@@ -10,11 +11,10 @@ export function FriendUploadSection() {
   }
 
   return (
-    <div className="side__upload">
-      <label className="side__select">
-        <span className="side__select-label">Изображение</span>
-        <input
-          className="side__upload-input"
+    <div className="flex flex-col gap-2">
+      <label className="flex flex-col gap-2">
+        <span className="text-xs text-muted-foreground">Изображение</span>
+        <Input
           type="file"
           accept="image/png,image/jpeg,image/webp"
           onChange={async (event) => {
@@ -40,7 +40,7 @@ export function FriendUploadSection() {
         />
       </label>
       {friendError ? (
-        <span className="side__hint side__hint--error">{friendError}</span>
+        <span className="text-xs text-destructive">{friendError}</span>
       ) : null}
     </div>
   );
