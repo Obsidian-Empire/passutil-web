@@ -3,6 +3,15 @@ import { useSide } from "../../lib/side";
 import { Input } from "../ui/input";
 import { buttonVariants } from "../ui/button";
 import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
+import {
   Popover,
   PopoverContent,
   PopoverHeader,
@@ -20,6 +29,37 @@ function normalizeHexColor(value: string) {
   return normalized.startsWith("#") ? normalized : `#${normalized}`;
 }
 
+const FONT_GROUPS = [
+  {
+    label: "Sans",
+    items: [
+      { label: "System UI", value: "system-ui" },
+      { label: "Arial", value: "Arial, sans-serif" },
+      { label: "Helvetica", value: "Helvetica, Arial, sans-serif" },
+      { label: "Segoe UI", value: "Segoe UI, sans-serif" },
+      { label: "Roboto", value: "Roboto, sans-serif" },
+    ],
+  },
+  {
+    label: "Serif",
+    items: [
+      { label: "Times New Roman", value: "Times New Roman, serif" },
+      { label: "Georgia", value: "Georgia, serif" },
+      { label: "Garamond", value: "Garamond, serif" },
+      { label: "Palatino", value: "Palatino, serif" },
+    ],
+  },
+  {
+    label: "Mono",
+    items: [
+      { label: "Courier New", value: "Courier New, monospace" },
+      { label: "Consolas", value: "Consolas, monospace" },
+      { label: "Fira Code", value: "Fira Code, monospace" },
+      { label: "Menlo", value: "Menlo, monospace" },
+    ],
+  },
+];
+
 export function TextEditSection() {
   const { isTextEdit } = useSide();
   const { state, updateState } = useCardState();
@@ -30,43 +70,80 @@ export function TextEditSection() {
 
   return (
     <div className="flex flex-col gap-4">
-      <Popover>
-        <PopoverTrigger
-          className={buttonVariants({ variant: "outline", size: "sm" })}
-        >
-          <span className="flex items-center gap-2">
-            <span
-              className="size-4 rounded-sm border border-border"
-              style={{ backgroundColor: state.textColor }}
-              aria-hidden="true"
-            />
-            <span className="text-xs">Цвет текста</span>
-          </span>
-        </PopoverTrigger>
-        <PopoverContent className="w-60">
-          <PopoverHeader>
-            <PopoverTitle>Цвет текста</PopoverTitle>
-          </PopoverHeader>
-          <div className="flex items-center gap-3">
-            <Input
-              type="color"
-              className="h-10 w-12 p-1"
-              value={state.textColor}
-              onInput={(event) =>
-                updateState({
-                  textColor: normalizeHexColor(event.currentTarget.value),
-                })
-              }
-            />
-            <div className="flex flex-col text-xs text-muted-foreground">
-              <span>HEX</span>
-              <span className="font-mono text-foreground">
-                {state.textColor.toUpperCase()}
-              </span>
+      <label className="flex flex-col gap-2">
+        <div className="text-xs text-muted-foreground">Цвет</div>
+        <Popover>
+          <PopoverTrigger
+            className={buttonVariants({ variant: "outline", size: "sm" })}
+          >
+            <span className="flex items-center gap-2">
+              <span
+                className="size-4 rounded-sm border border-border"
+                style={{ backgroundColor: state.textColor }}
+                aria-hidden="true"
+              />
+              <span className="text-xs">Цвет текста</span>
+            </span>
+          </PopoverTrigger>
+          <PopoverContent className="w-60">
+            <PopoverHeader>
+              <PopoverTitle>Цвет текста</PopoverTitle>
+            </PopoverHeader>
+            <div className="flex items-center gap-3">
+              <Input
+                type="color"
+                className="h-10 w-12 p-1"
+                value={state.textColor}
+                onInput={(event) =>
+                  updateState({
+                    textColor: normalizeHexColor(event.currentTarget.value),
+                  })
+                }
+              />
+              <div className="flex flex-col text-xs text-muted-foreground">
+                <span>HEX</span>
+                <span className="font-mono text-foreground">
+                  {state.textColor.toUpperCase()}
+                </span>
+              </div>
             </div>
-          </div>
-        </PopoverContent>
-      </Popover>
+          </PopoverContent>
+        </Popover>
+      </label>
+
+      <label className="flex flex-col gap-2">
+        <div className="text-xs text-muted-foreground">Шрифт</div>
+        <Select
+          value={state.textFont}
+          onValueChange={(value) =>
+            updateState({ textFont: value ?? state.textFont })
+          }
+        >
+          <SelectTrigger className="w-full">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            {FONT_GROUPS.map((group) => (
+              <SelectGroup key={group.label}>
+                <SelectLabel>{group.label}</SelectLabel>
+                {group.items.map((item) => (
+                  <SelectItem key={item.value} value={item.value}>
+                    <span className="flex flex-col">
+                      <span>{item.label}</span>
+                      <span
+                        className="text-xs text-muted-foreground"
+                        style={{ fontFamily: item.value }}
+                      >
+                        вкусные булочки
+                      </span>
+                    </span>
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            ))}
+          </SelectContent>
+        </Select>
+      </label>
       <label className="flex flex-col gap-2">
         <div className="flex items-center justify-between text-xs text-muted-foreground">
           <span>Прозвище</span>

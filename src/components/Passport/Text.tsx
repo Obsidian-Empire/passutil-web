@@ -3,10 +3,16 @@ import { useSide } from "../../lib/side";
 import { SelectBox } from "../ui/select-box";
 
 export function TextView() {
-  const { nickname, entryTime, about, textColor } = usePassportContext();
+  const { nickname, entryTime, about, textColor, textFont } =
+    usePassportContext();
 
   return (
-    <SelectBox type="text" aria-hidden="true" className={`text-[20px]`}>
+    <SelectBox
+      type="text"
+      aria-hidden="true"
+      className={`text-[20px]`}
+      style={{ fontFamily: textFont }}
+    >
       <div style={{ color: textColor }} className="absolute top-0 left-[133px]">
         {nickname}
       </div>

@@ -29,6 +29,7 @@ export const CardStateDataSchema = z.object({
   entry_time: z.string(),
   about: z.string(),
   textColor: z.string().default("#000000"),
+  textFont: z.string().default("system-ui"),
   user: z.string().optional(),
   friends: z.array(NullableStringSchema).max(14),
   selected: CardSelectedSchema,
@@ -62,6 +63,7 @@ const DEFAULT_CARD_STATE: CardStateData = {
   entry_time: "",
   about: "",
   textColor: "#000000",
+  textFont: "system-ui",
   friends: [],
   selected: {},
 };
@@ -72,6 +74,7 @@ export function createDefaultCardState(): CardStateData {
     entry_time: DEFAULT_CARD_STATE.entry_time,
     about: DEFAULT_CARD_STATE.about,
     textColor: DEFAULT_CARD_STATE.textColor,
+    textFont: DEFAULT_CARD_STATE.textFont,
     friends: [],
     selected: {},
   };
@@ -149,6 +152,7 @@ export default class CardState implements CardStateData {
   entry_time: string;
   about: string;
   textColor: string;
+  textFont: string;
   friends: (string | null)[];
   selected: CardSelected;
 
@@ -157,6 +161,7 @@ export default class CardState implements CardStateData {
     this.entry_time = initial?.entry_time ?? "";
     this.about = initial?.about ?? "";
     this.textColor = initial?.textColor ?? "#000000";
+    this.textFont = initial?.textFont ?? "system-ui";
     this.friends = initial?.friends ?? [];
     this.selected = initial?.selected ? { ...initial.selected } : {};
   }
