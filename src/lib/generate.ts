@@ -3,8 +3,6 @@ import domtoimage from "dom-to-image";
 export interface GenerateCardWebpOptions {
   selector?: string;
   quality?: number;
-  pixelRatio?: number;
-  backgroundColor?: string;
   filter?: (node: HTMLElement) => boolean;
 }
 
@@ -14,13 +12,6 @@ function assertBrowserAvailable(): void {
       "generateCardWebpUrl can only run in a browser environment",
     );
   }
-}
-
-function clampQuality(value: number | undefined): number {
-  if (typeof value !== "number" || Number.isNaN(value)) {
-    return 0.92;
-  }
-  return Math.min(1, Math.max(0, value));
 }
 
 async function loadImageFromBlob(blob: Blob): Promise<HTMLImageElement> {
@@ -106,25 +97,19 @@ export async function generateCardWebpUrl(
     throw new Error("Element has zero size and cannot be rendered");
   }
 
-  const pixelRatio = options.pixelRatio ?? 1;
-  const quality = clampQuality(options.quality);
-  const width = Math.max(1, Math.round(rect.width * pixelRatio));
-  const height = Math.max(1, Math.round(rect.height * pixelRatio));
+  const quality = Math.min(1, Math.max(0, options.quality || 80));
+  const width = 1600;
+  const height = 900;
 
   const blob = await domtoimage.toBlob(node, {
-    bgcolor: options.backgroundColor,
     filter: options.filter,
     width,
     height,
-    style:
-      pixelRatio !== 1
-        ? {
-            transform: `scale(${pixelRatio})`,
-            transformOrigin: "top left",
-            width: `${rect.width}px`,
-            height: `${rect.height}px`,
-          }
-        : undefined,
+    style: {
+      transformOrigin: "top left",
+      width: `${rect.width}px`,
+      height: `${rect.height}px`,
+    },
   });
 
   const canvas = await drawBlobToCanvas(blob, width, height);

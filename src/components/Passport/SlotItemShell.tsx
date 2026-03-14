@@ -1,4 +1,5 @@
 import type { ComponentChildren } from "preact";
+import { SelectBox } from "../ui/select-box";
 
 type SlotItemShellProps = {
   slotClassName: string;
@@ -11,44 +12,28 @@ type SlotEditItemShellProps = SlotItemShellProps & {
   ariaLabel: string;
 };
 
-function buildSlotClassName(base: string, slotClassName: string) {
-  return `${base} ${slotClassName}`;
-}
-
-export function SlotViewItemShell({
-  slotClassName,
-  children,
-}: SlotItemShellProps) {
+export function SlotViewItemShell({ children }: SlotItemShellProps) {
   return (
-    <div
-      className={buildSlotClassName(
-        "card_slot card_slot--display",
-        slotClassName,
-      )}
-      aria-hidden="true"
-    >
+    <SelectBox className="cursor-pointer" aria-hidden="true">
       {children}
-    </div>
+    </SelectBox>
   );
 }
 
 export function SlotEditItemShell({
-  slotClassName,
   children,
   isSelected,
   onClick,
   ariaLabel,
 }: SlotEditItemShellProps) {
   return (
-    <button
-      className={`${buildSlotClassName("card_slot", slotClassName)}${
-        isSelected ? " is-selected" : ""
-      }`}
-      type="button"
+    <SelectBox
+      className="cursor-pointer"
+      data-selected={isSelected ? true : false}
       onClick={onClick}
       aria-label={ariaLabel}
     >
       {children}
-    </button>
+    </SelectBox>
   );
 }
