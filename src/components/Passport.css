@@ -13,17 +13,20 @@
 }
 
 .card_stage {
-  width: calc(1600px * var(--card-scale, 1));
-  height: calc(900px * var(--card-scale, 1));
+  width: 100%;
+  height: 100%;
   position: relative;
+}
+
+.card_stage-content {
+  width: 1600px;
+  height: 900px;
 }
 
 .card {
   width: 1600px;
   height: 900px;
   position: relative;
-  transform: scale(var(--card-scale, 1));
-  transform-origin: top left;
 }
 
 .card_layer {

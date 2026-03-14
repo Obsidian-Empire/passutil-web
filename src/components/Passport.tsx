@@ -1,6 +1,7 @@
 import { useRef } from "preact/hooks";
-import type { MouseEventHandler, Ref, WheelEventHandler } from "preact";
-import { useViewport } from "../lib/viewport";
+import type { MouseEventHandler, Ref } from "preact";
+import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
+import { useSide } from "../lib/side";
 import {
   AvatarEdit,
   AvatarView,
@@ -22,42 +23,40 @@ import {
 import "./Passport.css";
 
 export default function Passport() {
-  const { scale, handleViewportWheel, handleViewportContainerMouseDown } =
-    useViewport();
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const { setActiveSlot } = useSide();
   const cardRef = useRef<HTMLDivElement | null>(null);
-
-  const onWheel: WheelEventHandler<HTMLDivElement> = (event) => {
-    const container = containerRef.current;
-    if (!container) {
-      return;
-    }
-    handleViewportWheel(event as unknown as WheelEvent, container);
-  };
-
-  const scaleStyle = { "--card-scale": scale } as Record<
-    string,
-    string | number
-  >;
 
   const onContainerMouseDown: MouseEventHandler<HTMLDivElement> = (event) => {
     const card = cardRef.current;
     if (!card) {
       return;
     }
-    handleViewportContainerMouseDown(event as unknown as MouseEvent, card);
+    if (card.contains(event.target as Node)) {
+      return;
+    }
+    setActiveSlot(null);
   };
 
   return (
-    <div
-      className="card_container"
-      onWheel={onWheel}
-      onMouseDown={onContainerMouseDown}
-      ref={containerRef}
-    >
-      <div className="card_stage" style={scaleStyle}>
-        <Card cardRef={cardRef} />
-      </div>
+    <div className="card_container" onMouseDown={onContainerMouseDown}>
+      <TransformWrapper
+        initialScale={0.7}
+        minScale={0.5}
+        maxScale={3}
+        centerOnInit
+        zoomAnimation={{
+          animationType: "easeInCubic",
+          size: 0.5,
+          animationTime: 1,
+        }}
+      >
+        <TransformComponent
+          wrapperClass="card_stage"
+          contentClass="card_stage-content"
+        >
+          <Card cardRef={cardRef} />
+        </TransformComponent>
+      </TransformWrapper>
     </div>
   );
 }
