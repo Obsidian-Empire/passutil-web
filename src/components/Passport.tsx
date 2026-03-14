@@ -86,7 +86,7 @@ function CardView() {
 
 function CardEditLayout() {
   return (
-    <div className="card_layer card_layer--overlay">
+    <div>
       <BackgroundEdit />
       <AvatarEdit />
       <FriendsEdit />

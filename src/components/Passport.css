@@ -47,116 +47,12 @@
   pointer-events: auto;
 }
 
-.card_slot--display {
-  pointer-events: none;
-}
-
 .card_img--ghost,
 .common-badge--ghost,
 .main-badge--ghost,
 .banner--ghost,
 .avatar--ghost {
   opacity: 0;
-}
-
-.card_slot {
-  border: none;
-  padding: 0;
-  margin: 0;
-  background: transparent;
-  cursor: pointer;
-}
-
-.card_slot.is-selected {
-  outline: 2px solid var(--color-accent);
-  outline-offset: -2px;
-}
-
-.card_slot:hover {
-  outline: 1px dashed var(--color-accent);
-  outline-offset: -1px;
-}
-
-.is-exporting-card .card_slot.is-selected,
-.is-exporting-card .card_slot:hover {
-  outline: none;
-}
-
-.card_slot--background,
-.card_slot--frame {
-  left: 0;
-  top: 0;
-  width: 1600px;
-  height: 900px;
-}
-
-.card_slot--text {
-  position: absolute;
-  left: 40px;
-  top: 426px;
-  width: 627px;
-  height: 450px;
-}
-
-.card_slot--avatar {
-  position: absolute;
-  left: 341px;
-  top: 31px;
-  width: 340px;
-  height: 340px;
-}
-
-.card_slot--background::after,
-.card_slot--frame::after,
-.card_slot--common-badge::after,
-.card_slot--main-badge::after,
-.card_slot--banner::after,
-.card_slot--friend::after,
-.card_slot--avatar::after,
-.card_slot--text::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border: 1px dashed var(--color-accent-dash);
-  opacity: 0;
-  pointer-events: none;
-}
-
-.card_slot--text::after {
-  opacity: 1;
-}
-
-.card_slot--background:empty::after,
-.card_slot--frame:empty::after,
-.card_slot--common-badge:empty::after,
-.card_slot--main-badge:empty::after,
-.card_slot--banner:empty::after,
-.card_slot--friend:empty::after,
-.card_slot--avatar:empty::after {
-  opacity: 1;
-}
-
-.is-exporting-card .card_slot--background::after,
-.is-exporting-card .card_slot--frame::after,
-.is-exporting-card .card_slot--common-badge::after,
-.is-exporting-card .card_slot--main-badge::after,
-.is-exporting-card .card_slot--banner::after,
-.is-exporting-card .card_slot--friend::after,
-.is-exporting-card .card_slot--avatar::after,
-.is-exporting-card .card_slot--text::after {
-  opacity: 0;
-}
-
-.card_slot--background .card_img,
-.card_slot--frame .card_frame {
-  position: absolute;
-  inset: 0;
-}
-
-.card_slot--avatar .card_avatar {
-  width: 100%;
-  height: 100%;
-  object-fit: fill;
 }
 
 .friends {
@@ -184,11 +80,6 @@
   display: block;
 }
 
-.card_slot--friend {
-  width: 100%;
-  height: 100%;
-}
-
 .common-badges {
   position: absolute;
   left: 1015px;
@@ -202,7 +93,6 @@
   min-height: 684px;
 }
 
-.card_slot--common-badge,
 .common-badge {
   width: 124px;
   height: 124px;
@@ -220,7 +110,6 @@
   min-height: 543px;
 }
 
-.card_slot--main-badge,
 .main-badge {
   width: 263px;
   height: 263px;
@@ -238,7 +127,6 @@
   min-height: 306px;
 }
 
-.card_slot--banner,
 .banner {
   width: 140px;
   height: 306px;

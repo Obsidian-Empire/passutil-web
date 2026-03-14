@@ -1,23 +1,23 @@
+import { SelectBox } from "../ui/select-box";
 import { usePassportContext } from "./PassportContext";
-import { SlotEditItemShell, SlotViewItemShell } from "./SlotItemShell";
 
 export function FriendsView() {
   return (
-    <div className="friends">
+    <SelectBox type="friend">
       {Array.from({ length: 14 }).map((_, index) => (
         <FriendsViewItem key={`friend-display-${index}`} index={index} />
       ))}
-    </div>
+    </SelectBox>
   );
 }
 
 export function FriendsEdit() {
   return (
-    <div className="friends">
+    <SelectBox variant="bound_box" type="friend">
       {Array.from({ length: 14 }).map((_, index) => (
         <FriendsEditItem key={`friend-${index}`} index={index} />
       ))}
-    </div>
+    </SelectBox>
   );
 }
 
@@ -26,27 +26,25 @@ function FriendsViewItem({ index }: { index: number }) {
   const friend = friends[index];
 
   return (
-    <SlotViewItemShell slotClassName="card_slot--friend">
+    <SelectBox type="friend_item" className="cursor-pointer" aria-hidden="true">
       {friend ? (
         <img className="avatar" src={friend} alt={index.toString()} />
       ) : null}
-    </SlotViewItemShell>
+    </SelectBox>
   );
 }
 
 function FriendsEditItem({ index }: { index: number }) {
-  const { friends, isSelected, selectSlot } = usePassportContext();
+  const { isSelected, selectSlot } = usePassportContext();
 
   return (
-    <SlotEditItemShell
-      slotClassName="card_slot--friend"
-      isSelected={isSelected("friend", index)}
+    <SelectBox
+      type="friend_item"
+      className="cursor-pointer"
+      data-selected={isSelected("friend", index) ? true : false}
       onClick={() => selectSlot("friend", index)}
-      ariaLabel={`Выбрать друга ${index + 1}`}
-    >
-      {friends[index] ? (
-        <img className="avatar avatar--ghost" src={friends[index]} alt="" />
-      ) : null}
-    </SlotEditItemShell>
+      aria-label={`Выбрать друга ${index + 1}`}
+      variant="edit"
+    />
   );
 }

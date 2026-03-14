@@ -1,33 +1,26 @@
 import { usePassportContext } from "./PassportContext";
+import { SelectBox } from "../ui/select-box";
 
 export function AvatarView() {
   const { user } = usePassportContext();
 
   return (
-    <div
-      className="card_slot card_slot--avatar card_slot--display"
-      aria-hidden="true"
-    >
+    <SelectBox type="avatar" aria-hidden="true" className="pointer-events-none">
       {user ? <img className="card_avatar" src={user} alt="" /> : null}
-    </div>
+    </SelectBox>
   );
 }
 
 export function AvatarEdit() {
-  const { user, isSelected, selectSlot } = usePassportContext();
+  const { isSelected, selectSlot } = usePassportContext();
 
   return (
-    <button
-      className={`card_slot card_slot--avatar${
-        isSelected("avatar", 0) ? " is-selected" : ""
-      }`}
-      type="button"
+    <SelectBox
+      type="avatar"
+      data-selected={isSelected("avatar", 0) ? true : false}
       onClick={() => selectSlot("avatar", 0)}
       aria-label="Выбрать аватар"
-    >
-      {user ? (
-        <img className="card_avatar card_avatar--ghost" src={user} alt="" />
-      ) : null}
-    </button>
+      variant="bound_box"
+    />
   );
 }

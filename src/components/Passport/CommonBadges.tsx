@@ -1,23 +1,23 @@
+import { SelectBox } from "../ui/select-box";
 import { usePassportContext } from "./PassportContext";
-import { SlotEditItemShell, SlotViewItemShell } from "./SlotItemShell";
 
 export function CommonBadgesView() {
   return (
-    <div className="common-badges">
+    <SelectBox type="common-badges">
       {Array.from({ length: 20 }).map((_, index) => (
         <CommonBadgeViewItem key={`common-badge-${index}`} index={index} />
       ))}
-    </div>
+    </SelectBox>
   );
 }
 
 export function CommonBadgesEdit() {
   return (
-    <div className="common-badges">
+    <SelectBox type="common-badges" variant="bound_box">
       {Array.from({ length: 20 }).map((_, index) => (
         <CommonBadgeEditItem key={`common-badge-${index}`} index={index} />
       ))}
-    </div>
+    </SelectBox>
   );
 }
 
@@ -26,7 +26,11 @@ function CommonBadgeViewItem({ index }: { index: number }) {
   const badge = commonBadges[index];
 
   return (
-    <SlotViewItemShell slotClassName="card_slot--common-badge">
+    <SelectBox
+      type="common-badge"
+      className="cursor-pointer"
+      aria-hidden="true"
+    >
       {badge ? (
         <img
           className="common-badge"
@@ -34,28 +38,21 @@ function CommonBadgeViewItem({ index }: { index: number }) {
           alt={badge.part.name}
         />
       ) : null}
-    </SlotViewItemShell>
+    </SelectBox>
   );
 }
 
 function CommonBadgeEditItem({ index }: { index: number }) {
-  const { commonBadges, isSelected, selectSlot } = usePassportContext();
-  const badge = commonBadges[index];
+  const { isSelected, selectSlot } = usePassportContext();
 
   return (
-    <SlotEditItemShell
-      slotClassName="card_slot--common-badge"
-      isSelected={isSelected("common_badge", index)}
+    <SelectBox
+      type="common-badge"
+      className="cursor-pointer"
+      data-selected={isSelected("common_badge", index) ? true : false}
       onClick={() => selectSlot("common_badge", index)}
-      ariaLabel={`Выбрать общий значок ${index + 1}`}
-    >
-      {badge ? (
-        <img
-          className="common-badge common-badge--ghost"
-          src={badge.part.url}
-          alt=""
-        />
-      ) : null}
-    </SlotEditItemShell>
+      aria-label={`Выбрать общий значок ${index + 1}`}
+      variant="edit"
+    />
   );
 }

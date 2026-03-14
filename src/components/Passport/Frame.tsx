@@ -1,14 +1,12 @@
 import { usePassportContext } from "./PassportContext";
+import { SelectBox } from "../ui/select-box";
 
 export function FrameView() {
   const { frameUrl } = usePassportContext();
 
   return (
-    <div
-      className="card_slot card_slot--frame card_slot--display"
-      aria-hidden="true"
-    >
+    <SelectBox type="frame" aria-hidden="true" className="pointer-events-none">
       {frameUrl ? <img className="card_frame" src={frameUrl} alt="" /> : null}
-    </div>
+    </SelectBox>
   );
 }
