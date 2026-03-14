@@ -31,8 +31,13 @@ function normalizeHexColor(value: string) {
 
 const FONT_GROUPS = [
   {
+    label: "Рекомендует партия",
+    items: [{ label: "Abel", value: '"Abel", sans-serif' }],
+  },
+  {
     label: "Sans",
     items: [
+      { label: "Abel", value: '"Abel", sans-serif' },
       { label: "System UI", value: "system-ui" },
       { label: "Arial", value: "Arial, sans-serif" },
       { label: "Helvetica", value: "Helvetica, Arial, sans-serif" },
