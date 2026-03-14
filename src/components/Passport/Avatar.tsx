@@ -7,7 +7,7 @@ export function AvatarView() {
   return (
     <SelectBox type="avatar" aria-hidden="true" className="pointer-events-none">
       {user ? (
-        <img className="w-full h-full object-cover" src={user} alt="" />
+        <img className="h-full w-full object-cover" src={user} alt="" />
       ) : null}
     </SelectBox>
   );

@@ -22,7 +22,7 @@ export function SelectedSlotSection() {
   };
 
   return (
-    <div className="flex flex-col gap-6 h-fit">
+    <div className="flex h-fit flex-col gap-6">
       {activeSlot ? (
         <Item variant="outline">
           <ItemContent>

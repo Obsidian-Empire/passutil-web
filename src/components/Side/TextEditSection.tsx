@@ -50,7 +50,7 @@ export function TextEditSection() {
           <span>{Math.max(0, 450 - state.about.length)}</span>
         </div>
         <textarea
-          className="min-h-[250px] resize-y rounded-lg border border-input bg-transparent px-2.5 py-2 text-sm outline-none transition focus-visible:ring-3 focus-visible:ring-ring/50"
+          className="min-h-[250px] resize-y rounded-lg border border-input bg-transparent px-2.5 py-2 text-sm transition outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
           rows={6}
           value={state.about}
           maxLength={450}

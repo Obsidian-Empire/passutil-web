@@ -9,11 +9,11 @@ export function TextView() {
     <SelectBox
       type="text"
       aria-hidden="true"
-      className="text-black text-[20px]"
+      className="text-[20px] text-black"
     >
-      <div className="absolute left-[133px] top-0">{nickname}</div>
-      <div className="absolute left-[133px] top-[35px]">{entryTime}</div>
-      <div className="absolute left-0 top-[68px]  indent-[133px]  leading-[40px] whitespace-pre-wrap wrap-anywhere">
+      <div className="absolute top-0 left-[133px]">{nickname}</div>
+      <div className="absolute top-[35px] left-[133px]">{entryTime}</div>
+      <div className="absolute top-[68px] left-0 indent-[133px] leading-[40px] wrap-anywhere whitespace-pre-wrap">
         {about}
       </div>
     </SelectBox>

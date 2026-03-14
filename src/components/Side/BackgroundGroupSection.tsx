@@ -10,7 +10,7 @@ export function BackgroundGroupSection() {
 
   return (
     <div className="flex flex-col gap-2 rounded-lg border border-border bg-muted/30 p-3">
-      <div className="text-xs uppercase tracking-[0.08em] text-muted-foreground">
+      <div className="text-xs tracking-[0.08em] text-muted-foreground uppercase">
         Связанные слоты
       </div>
       <div className="flex gap-2">

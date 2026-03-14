@@ -57,7 +57,7 @@ export function VariantsSection() {
 
   return (
     <div className="flex min-h-0 flex-1 flex-col gap-3">
-      <div className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+      <div className="text-xs font-semibold tracking-[0.12em] text-muted-foreground uppercase">
         Варианты
       </div>
       {!activeSlot ? (

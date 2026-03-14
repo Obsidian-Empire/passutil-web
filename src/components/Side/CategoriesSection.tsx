@@ -27,8 +27,8 @@ export function CategoriesSection() {
   }
 
   return (
-    <div className="flex flex-col gap-3 h-fit">
-      <div className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+    <div className="flex h-fit flex-col gap-3">
+      <div className="text-xs font-semibold tracking-[0.12em] text-muted-foreground uppercase">
         Категории
       </div>
       {!activeSlot ? (

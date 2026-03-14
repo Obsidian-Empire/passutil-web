@@ -29,7 +29,7 @@ function FriendsViewItem({ index }: { index: number }) {
     <SelectBox type="friend_item" className="cursor-pointer" aria-hidden="true">
       {friend ? (
         <img
-          className="w-full h-full object-cover"
+          className="h-full w-full object-cover"
           src={friend}
           alt={index.toString()}
         />

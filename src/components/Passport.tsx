@@ -60,7 +60,7 @@ export default function Passport() {
 
 function Card({ cardRef }: { cardRef: Ref<HTMLDivElement> }) {
   return (
-    <div className="w-[1600px] h-[900px]" ref={cardRef}>
+    <div className="h-[900px] w-[1600px]" ref={cardRef}>
       <PassportProvider>
         <CardView />
         <CardEditLayout />
@@ -71,7 +71,7 @@ function Card({ cardRef }: { cardRef: Ref<HTMLDivElement> }) {
 
 function CardView() {
   return (
-    <div className="w-[1600px] h-[900px] relative card">
+    <div className="card relative h-[900px] w-[1600px]">
       <BackgroundView />
       <FrameView />
       <AvatarView />
