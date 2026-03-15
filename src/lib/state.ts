@@ -29,7 +29,7 @@ export const CardStateDataSchema = z.object({
   entry_time: z.string(),
   about: z.string(),
   textColor: z.string().default("#000000"),
-  textFont: z.string().default("Abel"),
+  textFont: z.string().default("Abel, sans-serif"),
   user: z.string().optional(),
   friends: z.array(NullableStringSchema).max(14),
   selected: CardSelectedSchema,
@@ -63,7 +63,7 @@ const DEFAULT_CARD_STATE: CardStateData = {
   entry_time: "",
   about: "",
   textColor: "#000000",
-  textFont: "Abel",
+  textFont: "Abel, sans-serif",
   friends: [],
   selected: {},
 };
@@ -161,7 +161,7 @@ export default class CardState implements CardStateData {
     this.entry_time = initial?.entry_time ?? "";
     this.about = initial?.about ?? "";
     this.textColor = initial?.textColor ?? "#000000";
-    this.textFont = initial?.textFont ?? "Abel";
+    this.textFont = initial?.textFont ?? "Abel, sans-serif";
     this.friends = initial?.friends ?? [];
     this.selected = initial?.selected ? { ...initial.selected } : {};
   }
